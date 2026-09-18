@@ -42,10 +42,25 @@ export class Desktop extends Component {
         this.setContextListeners();
         this.setEventListeners();
         this.checkForNewFolders();
+        window.addEventListener('app_store_update', this.fetchAppsData);
     }
 
     componentWillUnmount() {
         this.removeContextListeners();
+        window.removeEventListener('app_store_update', this.fetchAppsData);
+    }
+
+    getInstalledApps = () => {
+        let stored = null;
+        if (typeof window !== "undefined" && typeof localStorage !== "undefined") {
+            stored = localStorage.getItem('installed_apps');
+        }
+        if (stored) {
+            let installed_ids = JSON.parse(stored);
+            return apps.filter(app => installed_ids.includes(app.id) || app.id.startsWith("new-folder-"));
+        } else {
+            return apps.filter(app => app.is_default !== false || app.id.startsWith("new-folder-"));
+        }
     }
 
     checkForNewFolders = () => {
@@ -154,7 +169,7 @@ export class Desktop extends Component {
     fetchAppsData = () => {
         let focused_windows = {}, closed_windows = {}, disabled_apps = {}, favourite_apps = {}, overlapped_windows = {}, minimized_windows = {};
         let desktop_apps = [];
-        apps.forEach((app) => {
+        this.getInstalledApps().forEach((app) => {
             focused_windows = {
                 ...focused_windows,
                 [app.id]: false,
@@ -196,7 +211,7 @@ export class Desktop extends Component {
     updateAppsData = () => {
         let focused_windows = {}, closed_windows = {}, favourite_apps = {}, minimized_windows = {}, disabled_apps = {};
         let desktop_apps = [];
-        apps.forEach((app) => {
+        this.getInstalledApps().forEach((app) => {
             focused_windows = {
                 ...focused_windows,
                 [app.id]: ((this.state.focused_windows[app.id] !== undefined || this.state.focused_windows[app.id] !== null) ? this.state.focused_windows[app.id] : false),
@@ -233,7 +248,7 @@ export class Desktop extends Component {
     renderDesktopApps = () => {
         if (Object.keys(this.state.closed_windows).length === 0) return;
         let appsJsx = [];
-        apps.forEach((app, index) => {
+        this.getInstalledApps().forEach((app, index) => {
             if (this.state.desktop_apps.includes(app.id)) {
 
                 const props = {
@@ -255,7 +270,7 @@ export class Desktop extends Component {
 
     renderWindows = () => {
         let windowsJsx = [];
-        apps.forEach((app, index) => {
+        this.getInstalledApps().forEach((app, index) => {
             if (this.state.closed_windows[app.id] === false) {
 
                 const props = {
@@ -508,7 +523,7 @@ export class Desktop extends Component {
                 <BackgroundImage img={this.props.bg_image_name} />
 
                 {/* Ubuntu Side Menu Bar */}
-                <SideBar apps={apps}
+                <SideBar apps={this.getInstalledApps()}
                     hide={this.state.hideSideBar}
                     hideSideBar={this.hideSideBar}
                     favourite_apps={this.state.favourite_apps}
@@ -535,7 +550,7 @@ export class Desktop extends Component {
                 }
 
                 { this.state.allAppsView ?
-                    <AllApplications apps={apps}
+                    <AllApplications apps={this.getInstalledApps()}
                         recentApps={this.app_stack}
                         openApp={this.openApp} /> : null}
 

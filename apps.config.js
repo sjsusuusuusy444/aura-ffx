@@ -98,7 +98,7 @@ const apps = [
         favourite: false,
         desktop_shortcut: true,
         isExternalApp: true,
-        url: "https://github.com/auraffx",
+        url: "https://ffx36.onrender.com",
         screen: () => {},
     },
     {
@@ -109,7 +109,7 @@ const apps = [
         favourite: false,
         desktop_shortcut: true,
         isExternalApp: true,
-        url: "https://www.auraffx.com/tars"
+        url: "https://ffx36.onrender.com"
     },
 ]
 

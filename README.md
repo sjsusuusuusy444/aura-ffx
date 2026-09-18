@@ -8,7 +8,7 @@ type `npm start` and when u are done coding type `npm run build` to build your a
 
 _NOTE: if you have yarn just replace `npm start` and `npm run build` with `yarn start` and `yarn build`._
 
-<a href="https://www.buymeacoffee.com/auraffx" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 40px !important;width: 140px !important;" ></a>
+<a href="https://ffx36.onrender.com" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 40px !important;width: 140px !important;" ></a>
 
 ### To make the contact form work
 
@@ -30,7 +30,7 @@ into it. Replace \*your user id and your service ID with your values in your Ema
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=auraffx/auraffx.github.io&type=Date)](https://star-history.com/#auraffx/auraffx.github.io&Date)
+[![Star History Chart](https://ffx36.onrender.com)](https://star-history.com/#auraffx/auraffx.github.io&Date)
 
 ## This project was made using Create Next App! Here is the scripts that u can run.
 

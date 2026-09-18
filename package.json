@@ -1,8 +1,8 @@
 {
-  "name": "vivek9patel-portfolio",
+  "name": "auraffx-portfolio",
   "version": "2.0.0",
   "private": true,
-  "homepage": "https://vivek9patel.github.io/",
+  "homepage": "https://auraffx.github.io/",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -10,7 +10,7 @@
     "export": "next export"
   },
   "engines": {
-    "node": ">=16.x"
+    "node": "16.x"
   },
   "dependencies": {
     "@emailjs/browser": "^3.10.0",

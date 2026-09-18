@@ -1,4 +1,5 @@
 import displaySpotify from './components/apps/spotify';
+import { displayYouTube } from './components/apps/youtube';
 import displayVsCode from './components/apps/vscode';
 import { displayTerminal } from './components/apps/terminal';
 import { displaySettings } from './components/apps/settings';
@@ -8,6 +9,15 @@ import { displayAboutAura } from './components/apps/vivek';
 import { displayTerminalCalc } from './components/apps/calc';
 
 const apps = [
+    {
+        id: "youtube",
+        title: "YouTube",
+        icon: './themes/Yaru/apps/youtube.svg',
+        disabled: false,
+        favourite: true,
+        desktop_shortcut: true,
+        screen: displayYouTube,
+    },
     {
         id: "calc",
         title: "Calc",

@@ -3,10 +3,10 @@ import React, { Component } from 'react';
 export class Chrome extends Component {
     constructor() {
         super();
-        this.home_url = 'https://www.bing.com';
+        this.home_url = './search.html';
         this.state = {
-            url: 'https://www.bing.com',
-            display_url: "https://www.bing.com",
+            url: './search.html',
+            display_url: "https://www.google.com",
         }
     }
 
@@ -28,7 +28,7 @@ export class Chrome extends Component {
     }
 
     goToHome = () => {
-        this.setState({ url: this.home_url, display_url: "https://www.bing.com" });
+        this.setState({ url: this.home_url, display_url: "https://www.google.com" });
         this.refreshChrome();
     }
 
@@ -48,8 +48,8 @@ export class Chrome extends Component {
                 url = encodeURI(url);
                 display_url = url;
                 if (url.includes("google.com")) { // 😅
-                    url = 'https://www.bing.com';
-                    display_url = "https://www.bing.com";
+                    url = './search.html';
+                    display_url = "https://www.google.com";
                 }
             } else {
                 display_url = url;

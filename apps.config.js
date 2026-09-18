@@ -5,7 +5,7 @@ import { displaySettings } from './components/apps/settings';
 import { displayChrome } from './components/apps/chrome';
 import { displayTrash } from './components/apps/trash';
 import { displayGedit } from './components/apps/gedit';
-import { displayAboutAURA FFX } from './components/apps/AURA FFX';
+import { displayAboutAura } from './components/apps/vivek';
 import { displayTerminalCalc } from './components/apps/calc';
 
 const apps = [
@@ -34,7 +34,7 @@ const apps = [
         disabled: false,
         favourite: true,
         desktop_shortcut: true,
-        screen: displayAboutAURA FFX,
+        screen: displayAboutAura,
     },
     {
         id: "vscode",

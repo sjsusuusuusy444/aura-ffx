@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactGA from 'react-ga4';
 
-export class AboutAURA FFX extends Component {
+export class AboutAura extends Component {
 
     constructor() {
         super();
@@ -103,10 +103,10 @@ export class AboutAURA FFX extends Component {
     }
 }
 
-export default AboutAURA FFX;
+export default AboutAura;
 
-export const displayAboutAURA FFX = () => {
-    return <AboutAURA FFX />;
+export const displayAboutAura = () => {
+    return <AboutAura />;
 }
 
 

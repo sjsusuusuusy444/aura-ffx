@@ -35,22 +35,28 @@ export class Chrome extends Component {
     checkKey = (e) => {
         if (e.key === "Enter") {
             let url = e.target.value;
-            let display_url = "";
-
             url = url.trim();
             if (url.length === 0) return;
 
-            if (url.indexOf("http://") !== 0 && url.indexOf("https://") !== 0) {
-                url = "https://" + url;
+            let display_url = "";
+            let isUrl = /^https?:\/\//.test(url) || /^[a-zA-Z0-9-]+\.[a-zA-Z]{2,}(\/.*)?$/.test(url);
+
+            if (isUrl) {
+                if (url.indexOf("http://") !== 0 && url.indexOf("https://") !== 0) {
+                    url = "https://" + url;
+                }
+                url = encodeURI(url);
+                display_url = url;
+                if (url.includes("google.com")) { // 😅
+                    url = 'https://www.google.com/webhp?igu=1';
+                    display_url = "https://www.google.com";
+                }
+            } else {
+                display_url = url;
+                url = "https://www.google.com/search?q=" + encodeURIComponent(url) + "&igu=1";
             }
 
-            url = encodeURI(url);
-            display_url = url;
-            if (url.includes("google.com")) { // 😅
-                url = 'https://www.google.com/webhp?igu=1';
-                display_url = "https://www.google.com";
-            }
-            this.setState({ url, display_url: url });
+            this.setState({ url, display_url });
             this.storeVisitedUrl(url, display_url);
             document.getElementById("chrome-url-bar").blur();
         }
